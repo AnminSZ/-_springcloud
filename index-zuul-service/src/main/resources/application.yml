@@ -1,0 +1,25 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+spring:
+  application:
+    name: index-zuul-service
+
+
+zuul:
+  routes:
+    api-codes:
+      path: /indexcode/**
+      serviceId: INDEX-CODES-SERVICE
+    api-code-datas:
+      path: /indexdata/**
+      serviceId: TREND-TRADING-BACKTEST-SERVICE
+    view:
+      path: /view/**
+      serviceId: TREND-TRADING-BACKTEST-VIEW
+  prefix: /api
+
+server:
+  port: 8031
